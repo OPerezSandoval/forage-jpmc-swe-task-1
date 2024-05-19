@@ -21,6 +21,7 @@
 import json
 import random
 import urllib.request
+import dateutil
 
 # Server API URLs
 QUERY = "http://localhost:8080/query?id={}"
@@ -32,10 +33,11 @@ N = 500
 def getDataPoint(quote):
     """ Produce all the needed values to generate a datapoint """
     """ ------------- Update this function ------------- """
+    """Price variable updated to reflect the correct price"""
     stock = quote['stock']
     bid_price = float(quote['top_bid']['price'])
     ask_price = float(quote['top_ask']['price'])
-    price = bid_price
+    price = float((bid_price + ask_price)/2)
     return stock, bid_price, ask_price, price
 
 
